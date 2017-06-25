@@ -1,0 +1,46 @@
+#encoding:utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+import json
+
+fr = open('xyj.txt','r')
+characers = []
+stat = {}
+
+for line in fr:
+	line = line.strip()
+
+
+	if len(line) == 0:
+		continue
+
+
+	line = unicode(line)  #str转换成unicod
+
+ 	for x in xrange(0,len(line)):
+ 		if not line[x] in characers:   #characers中的元素互斥，如果不在就加进去
+ 			characers.append(line[x])
+
+ 		if not stat.has_key(line[x]):  #如果没有这个键，值就是0，有这个键值就加一
+ 			stat[line[x]] = 0
+ 		stat[line[x]] += 1
+
+print len(characers)
+
+# fw = open('result.json','w')                        写      文              件
+# fw.write(json.dumps(stat))
+# fw.close()
+stat = sorted(stat.iteritems(),key=lambda d:d[1],reverse=True)  #stat变成一个二元组了
+
+# for key,value in stat.items():
+# 	print key,value
+# fr.close()
+for x in xrange(1,10):
+	print characers[x]
+
+for x in xrange(1,10):
+	print stat[x][1]
+
+#统计字符个数，并降序显示

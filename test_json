@@ -13,6 +13,6 @@ def processJson(inputJsonFile, outputJsonFile):
   #处理完之后重新转为Json格式，并在行尾加上一个逗号
         fout.write(line + '\n')      #写回到一个新的Json文件中去
     fin.close()                                                #关闭文件
-    fout.close()
+    fout.close()           #关闭
 
 processJson('viwei1.csv', 'weivi2.csv')
